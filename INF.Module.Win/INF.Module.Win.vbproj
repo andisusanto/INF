@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36788C8D-058A-4D98-A6B8-9C66647A10A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>INF.Module.Win</RootNamespace>
+    <AssemblyName>INF.Module.Win</AssemblyName>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>INF.Module.Win.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>INF.Module.Win.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'EasyTest|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\EasyTest\</OutputPath>
+    <DocumentationFile>INF.Module.Win.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineConstants>EASYTEST</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Xpo.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v13.1.Core">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Win.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.Base.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.BaseImpl.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v13.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v13.1.Wizard, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v13.1.Core, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.1.UI, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v13.1, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v13.1.Extensions, Version=13.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.configuration">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ViewController\PrintStatementController.Designer.vb">
+      <DependentUpon>PrintStatementController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintStatementController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintQuotationController.Designer.vb">
+      <DependentUpon>PrintQuotationController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintQuotationController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PurchaseOrderController.Designer.vb">
+      <DependentUpon>PurchaseOrderController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PurchaseOrderController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\SalesOrderController.Designer.vb">
+      <DependentUpon>SalesOrderController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\SalesOrderController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintDirectSales.Designer.vb">
+      <DependentUpon>PrintDirectSales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintDirectSales.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintInvoiceController.Designer.vb">
+      <DependentUpon>PrintInvoiceController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintInvoiceController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintPurchaseOrderController.Designer.vb">
+      <DependentUpon>PrintPurchaseOrderController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PrintPurchaseOrderController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\SuppressTransactionBaseConfirmation.Designer.vb">
+      <DependentUpon>SuppressTransactionBaseConfirmation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\SuppressTransactionBaseConfirmation.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\SalesInvoiceController.Designer.vb">
+      <DependentUpon>SalesInvoiceController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\SalesInvoiceController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PurchaseInvoiceController.Designer.vb">
+      <DependentUpon>PurchaseInvoiceController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewController\PurchaseInvoiceController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\WindowController\ShowCustomFormWindowController.Designer.vb">
+      <DependentUpon>ShowCustomFormWindowController.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\WindowController\ShowCustomFormWindowController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWizardPurchaseOrderFromSalesOrder.Designer.vb">
+      <DependentUpon>frmWizardPurchaseOrderFromSalesOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWizardPurchaseOrderFromSalesOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWizardSalesOrderFromPurchaseOrder.Designer.vb">
+      <DependentUpon>frmWizardSalesOrderFromPurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWizardSalesOrderFromPurchaseOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWizardSalesOrderFromQuotation.Designer.vb">
+      <DependentUpon>frmWizardSalesOrderFromQuotation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWizardSalesOrderFromQuotation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportBase.Designer.vb">
+      <DependentUpon>frmReportBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReportBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWIzardPurchaseInvoiceFromPurchaseOrder.Designer.vb">
+      <DependentUpon>frmWIzardPurchaseInvoiceFromPurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWIzardPurchaseInvoiceFromPurchaseOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmWizardSalesInvoiceFromSalesOrders.Designer.vb">
+      <DependentUpon>frmWizardSalesInvoiceFromSalesOrders.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmWizardSalesInvoiceFromSalesOrders.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UserControl\CheckableGridControl.Designer.vb">
+      <DependentUpon>CheckableGridControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\CheckableGridControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UIFromToDate.Designer.vb">
+      <DependentUpon>UIFromToDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UIFromToDate.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UIMultiSelectCombo.Designer.vb">
+      <DependentUpon>UIMultiSelectCombo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UIMultiSelectCombo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\UISpecificDate.Designer.vb">
+      <DependentUpon>UISpecificDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\UISpecificDate.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinModule.Designer.vb">
+      <DependentUpon>WinModule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WinModule.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controllers\ViewController\PrintStatementController.resx">
+      <DependentUpon>PrintStatementController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\PrintQuotationController.resx">
+      <DependentUpon>PrintQuotationController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\PurchaseOrderController.resx">
+      <DependentUpon>PurchaseOrderController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\SalesOrderController.resx">
+      <DependentUpon>SalesOrderController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\PrintDirectSales.resx">
+      <DependentUpon>PrintDirectSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\PrintInvoiceController.resx">
+      <DependentUpon>PrintInvoiceController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\PrintPurchaseOrderController.resx">
+      <DependentUpon>PrintPurchaseOrderController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\SalesInvoiceController.resx">
+      <DependentUpon>SalesInvoiceController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ViewController\PurchaseInvoiceController.resx">
+      <DependentUpon>PurchaseInvoiceController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\WindowController\ShowCustomFormWindowController.resx">
+      <DependentUpon>ShowCustomFormWindowController.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWizardPurchaseOrderFromSalesOrder.resx">
+      <DependentUpon>frmWizardPurchaseOrderFromSalesOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWizardSalesOrderFromPurchaseOrder.resx">
+      <DependentUpon>frmWizardSalesOrderFromPurchaseOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWizardSalesOrderFromQuotation.resx">
+      <DependentUpon>frmWizardSalesOrderFromQuotation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportBase.resx">
+      <DependentUpon>frmReportBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWIzardPurchaseInvoiceFromPurchaseOrder.resx">
+      <DependentUpon>frmWIzardPurchaseInvoiceFromPurchaseOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmWizardSalesInvoiceFromSalesOrders.resx">
+      <DependentUpon>frmWizardSalesInvoiceFromSalesOrders.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\CheckableGridControl.resx">
+      <DependentUpon>CheckableGridControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UIFromToDate.resx">
+      <DependentUpon>UIFromToDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UIMultiSelectCombo.resx">
+      <DependentUpon>UIMultiSelectCombo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\UISpecificDate.resx">
+      <DependentUpon>UISpecificDate.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\INF.Module\INF.Module.vbproj">
+      <Project>{F622EA3C-2609-4BB3-B589-6B1F2CFBB035}</Project>
+      <Name>INF.Module</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Controllers\ReadMe.txt" />
+    <None Include="Editors\ReadMe.txt" />
+    <None Include="Images\ReadMe.txt" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="INF" Logo="BO_Order">
+  <ActionDesign>
+    <Actions>
+      <Action Id="CancelSetPaidAction" ValidationContexts="CancelSetPaid" />
+      <Action Id="CancelSubmitAction" ValidationContexts="Save;Cancel" />
+      <Action Id="saExecuteAction" ImageName="Action_Debug_Start" />
+      <Action Id="SetPaidAction" ValidationContexts="SetPaid" />
+      <Action Id="SubmitAction" ValidationContexts="Save;Submit" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="INF.Module.ApplicationRole" ImageName="BO_Role" IsCloneable="True" />
+    <Class Name="INF.Module.ApplicationUser" ImageName="BO_User" IsCloneable="True" />
+    <Class Name="INF.Module.AutoNo" ImageName="AutoNumber" />
+    <Class Name="INF.Module.AutoNoDetail" ImageName="AutoNumber" />
+    <Class Name="INF.Module.Currency" ImageName="BO_Opportunity" />
+    <Class Name="INF.Module.CurrencyRate" ImageName="BO_Sale_v92" />
+    <Class Name="INF.Module.Customer" ImageName="BO_Customer" />
+    <Class Name="INF.Module.DirectSales" ImageName="BO_Sale" />
+    <Class Name="INF.Module.DirectSalesDetail" ImageName="BO_Sale" />
+    <Class Name="INF.Module.Item" ImageName="BO_Sale_Item_v92" />
+    <Class Name="INF.Module.PurchaseInvoice" ImageName="BO_Invoice" />
+    <Class Name="INF.Module.PurchaseInvoiceDetail" ImageName="BO_Invoice" />
+    <Class Name="INF.Module.PurchaseOrder" ImageName="Order" />
+    <Class Name="INF.Module.PurchaseOrderDetail" ImageName="Order" />
+    <Class Name="INF.Module.Report" ImageName="BO_Report" IsCloneable="True" />
+    <Class Name="INF.Module.ReportParameter" ImageName="BO_Report" />
+    <Class Name="INF.Module.RoundingSetup" ImageName="Setup" />
+    <Class Name="INF.Module.SalesInvoice" ImageName="BO_Invoice" />
+    <Class Name="INF.Module.SalesInvoiceDetail" ImageName="BO_Invoice" />
+    <Class Name="INF.Module.SalesOrder" ImageName="Order" />
+    <Class Name="INF.Module.SalesOrderDetail" ImageName="Order" FriendlyKeyProperty="" />
+    <Class Name="INF.Module.Supplier" ImageName="BO_Person" />
+    <Class Name="INF.Module.SystemConfig" ImageName="Config" />
+    <Class Name="INF.Module.Unit" ImageName="BO_Product" />
+  </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Default" Visible="False" Index="-1">
+        <Items>
+          <Item Id="INF.Module.ApplicationRole_ListView" Removed="True" />
+          <Item Id="INF.Module.ApplicationUser_ListView" Removed="True" />
+          <Item Id="INF.Module.AutoNo_ListView" Removed="True" />
+          <Item Id="INF.Module.Brand_ListView" Removed="True" />
+          <Item Id="INF.Module.CompanyBankAccount_ListView" Removed="True" />
+          <Item Id="INF.Module.CompanyInformation_ListView" Removed="True" />
+          <Item Id="INF.Module.CreateStatementProcess_ListView" Removed="True" />
+          <Item Id="INF.Module.Currency_ListView" Removed="True" />
+          <Item Id="INF.Module.CurrencyRate_ListView" Removed="True" />
+          <Item Id="INF.Module.Customer_ListView" Removed="True" />
+          <Item Id="INF.Module.DirectSales_ListView" Removed="True" />
+          <Item Id="INF.Module.Item_ListView" Removed="True" />
+          <Item Id="INF.Module.ItemPriceList_ListView" Removed="True" />
+          <Item Id="INF.Module.Material_ListView" Removed="True" />
+          <Item Id="INF.Module.Origin_ListView" Removed="True" />
+          <Item Id="INF.Module.Period_ListView" Removed="True" />
+          <Item Id="INF.Module.PurchaseInvoice_ListView" Removed="True" />
+          <Item Id="INF.Module.PurchaseOrder_ListView" Removed="True" />
+          <Item Id="INF.Module.Quotation_ListView" Removed="True" />
+          <Item Id="INF.Module.Report_ListView" Removed="True" />
+          <Item Id="INF.Module.RoundingSetup_ListView" Removed="True" />
+          <Item Id="INF.Module.SalesInvoice_ListView" Removed="True" />
+          <Item Id="INF.Module.SalesOrder_ListView" Removed="True" />
+          <Item Id="INF.Module.SalesPayment_ListView" Removed="True" />
+          <Item Id="INF.Module.ShippingPoint_ListView" Removed="True" />
+          <Item Id="INF.Module.Statement_ListView" Removed="True" />
+          <Item Id="INF.Module.Supplier_ListView" Removed="True" />
+          <Item Id="INF.Module.SystemConfig_ListView" Removed="True" />
+          <Item Id="INF.Module.Unit_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Transaction" Index="0" Shortcut="" ChildItemsDisplayStyle="List" ImageName="Transaction" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="INF.Module.Period_ListView" ViewId="INF.Module.Period_ListView" ObjectKey="" Index="0" ImageName="BO_Appointment" IsNewNode="True" />
+          <Item Id="INF.Module.CreateStatementProcess_ListView" ViewId="INF.Module.CreateStatementProcess_ListView" ObjectKey="" Index="1" ImageName="Action_Workflow_ShowWorkflowInstances" IsNewNode="True" />
+          <Item Id="INF.Module.Statement_ListView" ViewId="INF.Module.Statement_ListView" ObjectKey="" Index="2" ImageName="BO_Contract" IsNewNode="True" />
+          <Item Id="CurrencyRate" ImageName="BO_Sale_v92" ViewId="INF.Module.CurrencyRate_ListView" Index="3" IsNewNode="True" />
+          <Item Id="Purchase" Index="4" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="INF.Module.PurchaseOrder_ListView" ViewId="INF.Module.PurchaseOrder_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="PurchaseInvoice" ViewId="INF.Module.PurchaseInvoice_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="Sales" Index="5" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="INF.Module.Quotation_ListView" ViewId="INF.Module.Quotation_ListView" ObjectKey="" Index="0" ImageName="BO_FileAttachment" IsNewNode="True" />
+              <Item Id="INF.Module.DirectSales_ListView" ViewId="INF.Module.DirectSales_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+              <Item Id="INF.Module.SalesOrder_ListView" ViewId="INF.Module.SalesOrder_ListView" ObjectKey="" Index="2" IsNewNode="True" />
+              <Item Id="SalesInvoice" ViewId="INF.Module.SalesInvoice_ListView" ObjectKey="" Index="3" IsNewNode="True" />
+              <Item Id="INF.Module.SalesPayment_ListView" ViewId="INF.Module.SalesPayment_ListView" ObjectKey="" Index="4" ImageName="BO_Sale" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="Reports" ViewId="INF.Module.UIContainerObject_ListView" Caption="Reports" ImageName="BO_Report" IsNewNode="True" />
+          <Item Id="SalesInvoiceDetail" ViewId="INF.Module.SalesInvoiceDetail_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Master" Index="1" Shortcut="" ImageName="Master" ChildItemsDisplayStyle="List" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Item" ViewId="INF.Module.Item_ListView" ObjectKey="" Index="0" IsNewNode="True" />
+          <Item Id="Supplier" ViewId="INF.Module.Supplier_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="Customer" ViewId="INF.Module.Customer_ListView" ObjectKey="" Index="2" IsNewNode="True" />
+          <Item Id="Unit" ViewId="INF.Module.Unit_ListView" ObjectKey="" Index="3" IsNewNode="True" />
+          <Item Id="Currency" ViewId="INF.Module.Currency_ListView" ObjectKey="" Index="4" ImageName="BO_Sale_v92" IsNewNode="True" />
+          <Item Id="INF.Module.Material_ListView" ViewId="INF.Module.Material_ListView" ObjectKey="" Index="5" ImageName="ModelEditor_Action_Modules" IsNewNode="True" />
+          <Item Id="INF.Module.Brand_ListView" ViewId="INF.Module.Brand_ListView" ObjectKey="" Index="6" ImageName="Action_ParametrizedAction" IsNewNode="True" />
+          <Item Id="INF.Module.Origin_ListView" ViewId="INF.Module.Origin_ListView" ObjectKey="" Index="7" ImageName="BO_Country" IsNewNode="True" />
+          <Item Id="INF.Module.CompanyBankAccount_ListView" ViewId="INF.Module.CompanyBankAccount_ListView" ObjectKey="" Index="8" ImageName="BO_Organization" IsNewNode="True" />
+          <Item Id="INF.Module.ItemPriceList_ListView" ViewId="INF.Module.ItemPriceList_ListView" ObjectKey="" Index="9" ImageName="BO_Sale_Item_v92" IsNewNode="True" />
+          <Item Id="INF.Module.ShippingPoint_ListView" ViewId="INF.Module.ShippingPoint_ListView" ObjectKey="" Index="10" ImageName="BO_Order_Item" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="System" Index="2" Shortcut="" ChildItemsDisplayStyle="List" ImageName="System" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Report" ViewId="INF.Module.Report_ListView" Index="0" IsNewNode="True" />
+          <Item Id="AutoNo" ViewId="INF.Module.AutoNo_ListView" Index="1" IsNewNode="True" />
+          <Item Id="SystemConfig" ViewId="INF.Module.SystemConfig_DetailView" Index="2" IsNewNode="True" />
+          <Item Id="ApplicationUser" ViewId="INF.Module.ApplicationUser_ListView" ObjectKey="" Index="3" IsNewNode="True" />
+          <Item Id="ApplicationRole" ViewId="INF.Module.ApplicationRole_ListView" ObjectKey="" Index="4" IsNewNode="True" />
+          <Item Id="CompanyInformation" ViewId="INF.Module.CompanyInformation_DetailView" ObjectKey="" ImageName="BO_Contact" IsNewNode="True" />
+          <Item Id="INF.Module.RoundingSetup_ListView" ViewId="INF.Module.RoundingSetup_ListView" ObjectKey="" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="13.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="13.1.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="INF.Module.DirectSales_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="41" ImageName="">
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="DirectSales" ShowCaption="True" Caption="Direct Sales" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="DirectSales_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="No" ViewItem="No" SizeConstraintsType="Default" Index="0" RelativeSize="20" IsNewNode="True" />
+                  <LayoutItem Id="TransDate" ViewItem="TransDate" SizeConstraintsType="Default" Index="1" RelativeSize="15" IsNewNode="True" />
+                  <LayoutGroup Id="Auto9238757a-1422-4399-8b39-290daebf9162" ShowCaption="False" Caption="" Direction="Horizontal" Index="2" RelativeSize="15" IsNewNode="True">
+                    <LayoutItem Id="Currency" ViewItem="Currency" SizeConstraintsType="Default" Index="0" RelativeSize="49" IsNewNode="True" />
+                    <LayoutItem Id="Rate" ViewItem="Rate" SizeConstraintsType="Default" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Total" ViewItem="Total" SizeConstraintsType="Default" Index="3" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="Discount" ViewItem="Discount" SizeConstraintsType="Default" Index="4" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="GrandTotal" ViewItem="GrandTotal" SizeConstraintsType="Default" Index="5" RelativeSize="20" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item1" ShowCaption="True" Caption="Transaction Base" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" SizeConstraintsType="Default" Index="0" RelativeSize="20" IsNewNode="True" />
+                <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" SizeConstraintsType="Default" Index="1" RelativeSize="15" IsNewNode="True" />
+                <LayoutItem Id="Status" ViewItem="Status" SizeConstraintsType="Default" Index="2" RelativeSize="65" IsNewNode="True" />
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="DirectSales" RelativeSize="53" ImageName="" Removed="True">
+              <LayoutGroup Id="DirectSales_col1" RelativeSize="48" ImageName="">
+                <LayoutItem Id="Currency" SizeConstraintsType="Default" RelativeSize="21" ViewItem="Currency" />
+                <LayoutItem Id="No" SizeConstraintsType="Default" RelativeSize="28" ViewItem="No" />
+                <LayoutItem Id="Rate" SizeConstraintsType="Default" RelativeSize="28" ViewItem="Rate" />
+                <LayoutItem Id="TransDate" SizeConstraintsType="Default" RelativeSize="21" ViewItem="TransDate" />
+              </LayoutGroup>
+              <LayoutGroup Id="DirectSales_col2" RelativeSize="48" ImageName="">
+                <LayoutItem Id="Discount" SizeConstraintsType="Default" RelativeSize="28" ViewItem="Discount" />
+                <LayoutItem Id="GrandTotal" SizeConstraintsType="Default" RelativeSize="21" ViewItem="GrandTotal" />
+                <LayoutItem Id="SayWord" SizeConstraintsType="Default" RelativeSize="28" ViewItem="SayWord" />
+                <LayoutItem Id="Total" SizeConstraintsType="Default" RelativeSize="21" ViewItem="Total" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="TransactionBase" RelativeSize="45" ImageName="" Direction="Horizontal" Removed="True">
+              <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" Removed="True" />
+              <LayoutItem Id="Status" ViewItem="Status" Removed="True" />
+              <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="58">
+            <LayoutGroup Id="Details" RelativeSize="100" ImageName="BO_Sale">
+              <LayoutItem Id="Details" SizeConstraintsType="Default" RelativeSize="100" ViewItem="Details" />
+            </LayoutGroup>
+            <LayoutGroup Id="ChangeHistories" RelativeSize="100" ImageName="BO_Audit_ChangeHistory">
+              <LayoutItem Id="ChangeHistories" SizeConstraintsType="Default" RelativeSize="100" ViewItem="ChangeHistories" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.ItemPriceList_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="" Caption="Main" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="77" ImageName="" Caption="SimpleEditors" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <LayoutGroup Id="ItemPriceList" RelativeSize="100" ImageName="" Direction="Vertical" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+              <LayoutGroup Id="ItemPriceList_col1" RelativeSize="85" ImageName="" Caption="ItemPriceList_col1" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+                <LayoutItem Id="Item" SizeConstraintsType="Default" RelativeSize="13" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" />
+                <LayoutGroup Id="Auto2c74427c-a261-419e-8a91-c80d7efd14f2" ShowCaption="False" Caption="Auto2c74427c-a261-419e-8a91-c80d7efd14f2(6)" Direction="Horizontal" Index="1" RelativeSize="26" IsNewNode="True">
+                  <LayoutGroup Id="Auto443ca213-a818-489a-a1d0-05b880bd3ab1" ShowCaption="False" Caption="Auto443ca213-a818-489a-a1d0-05b880bd3ab1(7)" Index="0" RelativeSize="29" IsNewNode="True">
+                    <LayoutItem Id="Supplier" ViewItem="Supplier" SizeConstraintsType="Default" Index="0" RelativeSize="50" IsNewNode="True" />
+                    <LayoutItem Id="ArrivalDate" ViewItem="ArrivalDate" SizeConstraintsType="Default" Index="1" RelativeSize="50" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autoa2b168c4-d0b0-4c9e-a070-0621bc63393b" ShowCaption="False" Caption="Autoa2b168c4-d0b0-4c9e-a070-0621bc63393b(10)" Index="1" RelativeSize="70" IsNewNode="True">
+                    <LayoutItem Id="Item5" ShowCaption="False" SizeConstraintsType="Default" Index="0" RelativeSize="50" ViewItem="" IsNewNode="True" />
+                    <LayoutItem Id="Item6" ShowCaption="False" SizeConstraintsType="Default" Index="1" RelativeSize="50" ViewItem="" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="2" RelativeSize="28" Caption="Capital" IsNewNode="True">
+                  <LayoutItem Id="CapitalCurrency" ViewItem="CapitalCurrency" SizeConstraintsType="Default" Index="0" RelativeSize="10" ShowCaption="False" IsNewNode="True" />
+                  <LayoutItem Id="CapitalBasicAmount" ViewItem="CapitalBasicAmount" SizeConstraintsType="Default" Index="1" RelativeSize="17" IsNewNode="True" />
+                  <LayoutItem Id="CapitalAmount" ViewItem="CapitalAmount" SizeConstraintsType="Default" Index="2" RelativeSize="21" IsNewNode="True" />
+                  <LayoutItem Id="Item3" ShowCaption="False" SizeConstraintsType="Default" Index="3" RelativeSize="48" ViewItem="" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="3" RelativeSize="31" Caption="Price" IsNewNode="True">
+                  <LayoutItem Id="PriceCurrency" ViewItem="PriceCurrency" SizeConstraintsType="Default" Index="0" RelativeSize="10" ShowCaption="False" IsNewNode="True" />
+                  <LayoutItem Id="PriceAmount" ViewItem="PriceAmount" SizeConstraintsType="Default" Index="1" RelativeSize="17" ShowCaption="False" IsNewNode="True" />
+                  <LayoutItem Id="Item4" ShowCaption="False" SizeConstraintsType="Default" Index="2" RelativeSize="69" ViewItem="" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="ArrivalDate" SizeConstraintsType="Default" RelativeSize="10" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" Removed="True" />
+                <LayoutItem Id="CapitalCurrency" Removed="True" />
+                <LayoutItem Id="Supplier" SizeConstraintsType="Default" RelativeSize="10" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ItemPriceList_col2" RelativeSize="24" ImageName="" Caption="ItemPriceList_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="CapitalAmount" Removed="True" />
+                <LayoutItem Id="CapitalBasicAmount" Removed="True" />
+                <LayoutItem Id="PriceAmount" Removed="True" />
+                <LayoutItem Id="PriceCurrency" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="ChangeHistories_Group" Direction="Vertical" Index="1" RelativeSize="22" ImageName="BO_Audit_ChangeHistory" Caption="Change Histories" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <LayoutItem Id="ChangeHistories" SizeConstraintsType="Default" RelativeSize="49" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.PurchaseInvoice_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="" Caption="Main" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="84" ImageName="" Caption="SimpleEditors" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="98" IsNewNode="True">
+              <LayoutGroup Id="PurchaseInvoice" ShowCaption="True" Caption="Purchase Invoice" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="PurchaseInvoice_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="No" ViewItem="No" SizeConstraintsType="Default" Index="0" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="ReferenceNo" ViewItem="ReferenceNo" SizeConstraintsType="Default" Index="1" RelativeSize="8" IsNewNode="True" />
+                  <LayoutItem Id="Supplier" ViewItem="Supplier" SizeConstraintsType="Default" Index="2" RelativeSize="8" IsNewNode="True" />
+                  <LayoutItem Id="TransDate" ViewItem="TransDate" SizeConstraintsType="Default" Index="3" RelativeSize="8" IsNewNode="True" />
+                  <LayoutItem Id="Term" ViewItem="Term" SizeConstraintsType="Default" Index="4" RelativeSize="8" IsNewNode="True" />
+                  <LayoutItem Id="DueDate" ViewItem="DueDate" SizeConstraintsType="Default" Index="5" RelativeSize="8" IsNewNode="True" />
+                  <LayoutGroup Id="Autobecd815a-7e27-4588-b862-e67e7265e9ce" ShowCaption="False" Caption="Autobecd815a-7e27-4588-b862-e67e7265e9ce(11)" Direction="Horizontal" Index="6" RelativeSize="12" IsNewNode="True">
+                    <LayoutItem Id="Currency" ViewItem="Currency" SizeConstraintsType="Default" Index="0" RelativeSize="48" IsNewNode="True" />
+                    <LayoutItem Id="Rate" ViewItem="Rate" SizeConstraintsType="Default" Index="1" RelativeSize="51" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Total" ViewItem="Total" SizeConstraintsType="Default" Index="7" RelativeSize="8" IsNewNode="True" />
+                  <LayoutItem Id="Discount" ViewItem="Discount" SizeConstraintsType="Default" Index="8" RelativeSize="8" IsNewNode="True" />
+                  <LayoutItem Id="GrandTotal" ViewItem="GrandTotal" SizeConstraintsType="Default" Index="9" RelativeSize="8" IsNewNode="True" />
+                  <LayoutItem Id="IsPaid" ViewItem="IsPaid" SizeConstraintsType="Default" Index="10" RelativeSize="10" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item1" ShowCaption="True" Caption="Transaction Base" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Status" ViewItem="Status" SizeConstraintsType="Default" Index="0" RelativeSize="10" IsNewNode="True" />
+                <LayoutGroup Id="Autoe3916eb2-b3fa-4a66-9737-a1f878c21eca" ShowCaption="False" Caption="Autoe3916eb2-b3fa-4a66-9737-a1f878c21eca(19)" Direction="Horizontal" Index="1" RelativeSize="89" IsNewNode="True">
+                  <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" SizeConstraintsType="Default" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" SizeConstraintsType="Default" Index="1" RelativeSize="49" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="PayableTransaction" RelativeSize="1" ImageName="" Direction="Horizontal" Caption="Is Paid">
+              <LayoutItem Id="IsPaid" ViewItem="IsPaid" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="PurchaseInvoice" RelativeSize="60" ImageName="" Removed="True">
+              <LayoutGroup Id="PurchaseInvoice_col1" RelativeSize="48" ImageName="">
+                <LayoutItem Id="Currency" SizeConstraintsType="Default" RelativeSize="20" ViewItem="Currency" />
+                <LayoutItem Id="DueDate" SizeConstraintsType="Default" RelativeSize="15" ViewItem="DueDate" />
+                <LayoutItem Id="No" SizeConstraintsType="Default" RelativeSize="20" ViewItem="No" />
+                <LayoutItem Id="Supplier" SizeConstraintsType="Default" RelativeSize="15" ViewItem="Supplier" />
+                <LayoutItem Id="Term" SizeConstraintsType="Default" RelativeSize="15" ViewItem="Term" />
+                <LayoutItem Id="TransDate" SizeConstraintsType="Default" RelativeSize="15" ViewItem="TransDate" />
+              </LayoutGroup>
+              <LayoutGroup Id="PurchaseInvoice_col2" RelativeSize="48" ImageName="">
+                <LayoutItem Id="Discount" SizeConstraintsType="Default" RelativeSize="15" ViewItem="Discount" />
+                <LayoutItem Id="GrandTotal" SizeConstraintsType="Default" RelativeSize="15" ViewItem="GrandTotal" />
+                <LayoutItem Id="Rate" SizeConstraintsType="Default" RelativeSize="20" ViewItem="Rate" />
+                <LayoutItem Id="SayWord" SizeConstraintsType="Default" RelativeSize="35" ViewItem="SayWord" />
+                <LayoutItem Id="Total" SizeConstraintsType="Default" RelativeSize="15" ViewItem="Total" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="TransactionBase" RelativeSize="38" ImageName="" Direction="Horizontal" Removed="True">
+              <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" Removed="True" />
+              <LayoutItem Id="Status" ViewItem="Status" Removed="True" />
+              <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="15" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <LayoutGroup Id="Details" RelativeSize="100" ImageName="BO_Invoice" Caption="Details" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+              <LayoutItem Id="Details" SizeConstraintsType="Default" RelativeSize="100" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" ViewItem="Details" />
+            </LayoutGroup>
+            <LayoutGroup Id="ChangeHistories" RelativeSize="100" ImageName="BO_Audit_ChangeHistory" Caption="Change Histories" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+              <LayoutItem Id="ChangeHistories" SizeConstraintsType="Default" RelativeSize="100" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" ViewItem="ChangeHistories" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.PurchaseInvoiceDetail_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100" ImageName="">
+            <LayoutGroup Id="PurchaseInvoiceDetail" RelativeSize="100" ImageName="" Direction="Vertical">
+              <LayoutGroup Id="PurchaseInvoiceDetail_col1" RelativeSize="87" ImageName="">
+                <LayoutItem Id="PurchaseOrderDetail" SizeConstraintsType="Default" RelativeSize="11" />
+                <LayoutItem Id="Quantity" SizeConstraintsType="Default" RelativeSize="8" />
+                <LayoutItem Id="PricePerUnit" SizeConstraintsType="Default" RelativeSize="8" />
+                <LayoutItem Id="Amount" ViewItem="Amount" SizeConstraintsType="Default" Index="3" RelativeSize="8" IsNewNode="True" />
+                <LayoutItem Id="BaseAmount" ViewItem="BaseAmount" SizeConstraintsType="Default" Index="4" RelativeSize="62" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="PurchaseInvoiceDetail_col2" RelativeSize="48" Caption="PurchaseInvoiceDetail_col2" ImageName="" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="Amount" Removed="True" />
+                <LayoutItem Id="BaseAmount" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.PurchaseOrder_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="" Caption="Main" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="81" ImageName="" Caption="SimpleEditors" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="PurchaseOrder" ShowCaption="True" Caption="Purchase Order" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="PurchaseOrder_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="No" ViewItem="No" SizeConstraintsType="Default" Index="0" RelativeSize="13" IsNewNode="True" />
+                  <LayoutItem Id="Supplier" ViewItem="Supplier" SizeConstraintsType="Default" Index="1" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="TransDate" ViewItem="TransDate" SizeConstraintsType="Default" Index="2" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="Term" ViewItem="Term" SizeConstraintsType="Default" Index="3" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="DueDate" ViewItem="DueDate" SizeConstraintsType="Default" Index="4" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="ShippingPoint" ViewItem="ShippingPoint" SizeConstraintsType="Default" Index="5" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="Currency" ViewItem="Currency" SizeConstraintsType="Default" Index="6" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="TotalAmount" ViewItem="TotalAmount" SizeConstraintsType="Default" Index="7" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="InvoicingOutstandingStatus" ViewItem="InvoicingOutstandingStatus" SizeConstraintsType="Default" Index="8" RelativeSize="13" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item1" ShowCaption="True" Caption="Transaction Base" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Status" ViewItem="Status" SizeConstraintsType="Default" Index="0" RelativeSize="13" IsNewNode="True" />
+                <LayoutGroup Id="Auto927386bc-4d37-485a-93be-c8e80f9e7227" ShowCaption="False" Caption="Auto927386bc-4d37-485a-93be-c8e80f9e7227(16)" Direction="Horizontal" Index="1" RelativeSize="86" IsNewNode="True">
+                  <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" SizeConstraintsType="Default" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" SizeConstraintsType="Default" Index="1" RelativeSize="49" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="PurchaseOrder" RelativeSize="53" ImageName="" Removed="True">
+              <LayoutGroup Id="PurchaseOrder_col1" RelativeSize="48" ImageName="">
+                <LayoutItem Id="No" SizeConstraintsType="Default" RelativeSize="28" ViewItem="No" />
+                <LayoutItem Id="Supplier" SizeConstraintsType="Default" RelativeSize="21" ViewItem="Supplier" />
+                <LayoutItem Id="Term" SizeConstraintsType="Default" RelativeSize="28" ViewItem="Term" />
+                <LayoutItem Id="TransDate" SizeConstraintsType="Default" RelativeSize="21" ViewItem="TransDate" />
+              </LayoutGroup>
+              <LayoutGroup Id="PurchaseOrder_col2" RelativeSize="48" ImageName="">
+                <LayoutItem Id="Currency" SizeConstraintsType="Default" RelativeSize="21" ViewItem="Currency" />
+                <LayoutItem Id="DueDate" SizeConstraintsType="Default" RelativeSize="28" ViewItem="DueDate" />
+                <LayoutItem Id="InvoicingOutstandingStatus" SizeConstraintsType="Default" RelativeSize="28" ViewItem="InvoicingOutstandingStatus" />
+                <LayoutItem Id="TotalAmount" SizeConstraintsType="Default" RelativeSize="21" ViewItem="TotalAmount" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="TransactionBase" RelativeSize="45" ImageName="" Direction="Horizontal" Removed="True">
+              <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" Removed="True" />
+              <LayoutItem Id="Status" ViewItem="Status" Removed="True" />
+              <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="18" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <LayoutGroup Id="Details" RelativeSize="100" ImageName="Order" Caption="Details" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+              <LayoutItem Id="Details" SizeConstraintsType="Default" RelativeSize="100" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" ViewItem="Details" />
+            </LayoutGroup>
+            <LayoutGroup Id="ChangeHistories" RelativeSize="100" ImageName="BO_Audit_ChangeHistory" Caption="Change Histories" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+              <LayoutItem Id="ChangeHistories" SizeConstraintsType="Default" RelativeSize="100" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" ViewItem="ChangeHistories" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.PurchaseOrderDetail_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="61" ImageName="">
+            <LayoutGroup Id="PurchaseOrderDetail" RelativeSize="100" ImageName="" Direction="Vertical">
+              <LayoutGroup Id="PurchaseOrderDetail_col1" RelativeSize="80" ImageName="">
+                <LayoutItem Id="Item" SizeConstraintsType="Default" RelativeSize="20" />
+                <LayoutItem Id="Quantity" SizeConstraintsType="Default" RelativeSize="15" />
+                <LayoutItem Id="PricePerUnit" SizeConstraintsType="Default" RelativeSize="15" />
+                <LayoutItem Id="Amount" ViewItem="Amount" SizeConstraintsType="Default" Index="3" RelativeSize="15" IsNewNode="True" />
+                <LayoutItem Id="InvoicedQuantity" ViewItem="InvoicedQuantity" SizeConstraintsType="Default" Index="4" RelativeSize="15" IsNewNode="True" />
+                <LayoutItem Id="OutstandingQuantity" ViewItem="OutstandingQuantity" SizeConstraintsType="Default" Index="5" RelativeSize="20" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="PurchaseOrderDetail_col2" RelativeSize="48" ImageName="" Caption="PurchaseOrderDetail_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="Amount" Removed="True" />
+                <LayoutItem Id="InvoicedQuantity" Removed="True" />
+                <LayoutItem Id="OutstandingQuantity" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="InvoiceDetails_Group" Direction="Vertical" Index="1" RelativeSize="38" ImageName="BO_Invoice">
+            <LayoutItem Id="InvoiceDetails" SizeConstraintsType="Default" RelativeSize="68" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.SalesInvoice_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main" ImageName="" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors" ImageName="" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" RelativeSize="51">
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="SalesInvoice" ShowCaption="True" Caption="Sales Invoice" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="SalesInvoice_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="No" ViewItem="No" SizeConstraintsType="Default" Index="0" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="DONo" ViewItem="DONo" SizeConstraintsType="Default" Index="1" RelativeSize="11" IsNewNode="True" />
+                  <LayoutItem Id="Customer" ViewItem="Customer" SizeConstraintsType="Default" Index="2" RelativeSize="11" IsNewNode="True" />
+                  <LayoutGroup Id="Auto546e6e9b-64fc-4f54-9949-fc367a10eb33" ShowCaption="False" Caption="" Direction="Horizontal" Index="3" RelativeSize="34" IsNewNode="True">
+                    <LayoutGroup Id="Auto5500164b-598f-4993-9151-f8c72181743e" ShowCaption="False" Caption="" Index="0" RelativeSize="49" IsNewNode="True">
+                      <LayoutItem Id="TransDate" ViewItem="TransDate" SizeConstraintsType="Default" Index="0" RelativeSize="33" IsNewNode="True" />
+                      <LayoutItem Id="Currency" ViewItem="Currency" SizeConstraintsType="Default" Index="1" RelativeSize="33" IsNewNode="True" />
+                      <LayoutItem Id="Total" ViewItem="Total" SizeConstraintsType="Default" Index="2" RelativeSize="33" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Auto7f3054b9-019c-4024-b17e-801826af223e" ShowCaption="False" Caption="" Index="1" RelativeSize="50" IsNewNode="True">
+                      <LayoutItem Id="Term" ViewItem="Term" SizeConstraintsType="Default" Index="0" RelativeSize="33" IsNewNode="True" />
+                      <LayoutItem Id="Rate" ViewItem="Rate" SizeConstraintsType="Default" Index="1" RelativeSize="33" IsNewNode="True" />
+                      <LayoutItem Id="Discount" ViewItem="Discount" SizeConstraintsType="Default" Index="2" RelativeSize="33" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutItem Id="GrandTotal" ViewItem="GrandTotal" SizeConstraintsType="Default" Index="4" RelativeSize="11" IsNewNode="True" />
+                  <LayoutItem Id="BankAccount" ViewItem="BankAccount" SizeConstraintsType="Default" Index="5" RelativeSize="15" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" Caption="Transaction Base" IsNewNode="True">
+                <LayoutItem Id="Status" ViewItem="Status" SizeConstraintsType="Default" Index="0" RelativeSize="15" IsNewNode="True" />
+                <LayoutGroup Id="Autofb39ead0-424b-458d-b848-2c79b43f5a70" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="84" IsNewNode="True">
+                  <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" SizeConstraintsType="Default" Index="0" RelativeSize="49" IsNewNode="True" />
+                  <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" SizeConstraintsType="Default" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="TransactionBase" RelativeSize="21" ImageName="" Caption="TransactionBase" Direction="Horizontal" Index="1" Removed="True">
+              <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" Removed="True" />
+              <LayoutItem Id="Status" ViewItem="Status" Removed="True" />
+              <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="PayableTransaction" RelativeSize="8" ImageName="" Direction="Horizontal" Caption="Is Paid" Removed="True">
+              <LayoutItem Id="IsPaid" ViewItem="IsPaid" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="SalesInvoice" Removed="True" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" Index="1" RelativeSize="48">
+            <LayoutGroup Id="Details" Caption="Details" ImageName="BO_Invoice" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" RelativeSize="100">
+              <LayoutItem Id="Details" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" SizeConstraintsType="Default" RelativeSize="100" ViewItem="Details" />
+            </LayoutGroup>
+            <LayoutGroup Id="ChangeHistories" Caption="Change Histories" ImageName="BO_Audit_ChangeHistory" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" RelativeSize="100">
+              <LayoutItem Id="ChangeHistories" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" SizeConstraintsType="Default" RelativeSize="100" ViewItem="ChangeHistories" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.SalesInvoiceDetail_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100" ImageName="">
+            <LayoutGroup Id="SalesInvoiceDetail" RelativeSize="100" ImageName="" Direction="Vertical">
+              <LayoutGroup Id="SalesInvoiceDetail_col1" RelativeSize="87" ImageName="">
+                <LayoutItem Id="SalesOrderDetail" SizeConstraintsType="Default" RelativeSize="11" />
+                <LayoutItem Id="Quantity" SizeConstraintsType="Default" RelativeSize="8" />
+                <LayoutItem Id="PricePerUnit" SizeConstraintsType="Default" RelativeSize="8" />
+                <LayoutItem Id="Amount" ViewItem="Amount" SizeConstraintsType="Default" Index="3" RelativeSize="8" IsNewNode="True" />
+                <LayoutItem Id="BaseAmount" ViewItem="BaseAmount" SizeConstraintsType="Default" Index="4" RelativeSize="62" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesInvoiceDetail_col2" RelativeSize="48" Caption="SalesInvoiceDetail_col2" ImageName="" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="Amount" Removed="True" />
+                <LayoutItem Id="BaseAmount" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="INF.Module.SalesInvoiceDetail_ListView">
+      <Columns>
+        <ColumnInfo Id="SalesOrderDetail.Item" PropertyName="SalesOrderDetail.Item" IsNewNode="True" />
+      </Columns>
+      <Filters>
+        <Filter Id="SalesInvoiceDetailFilterStatus" Criteria="[SalesInvoice.Status] = ##Enum#INF.Module.GlobalEnum+TransactionStatus,Submitted#" IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <DetailView Id="INF.Module.SalesOrder_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="" Caption="Main" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="81" ImageName="" Caption="SimpleEditors" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="SalesOrder" ShowCaption="True" Caption="Sales Order" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="SalesOrder_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="No" ViewItem="No" SizeConstraintsType="Default" Index="0" RelativeSize="13" IsNewNode="True" />
+                  <LayoutItem Id="ReferenceNo" ViewItem="ReferenceNo" SizeConstraintsType="Default" Index="1" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="Customer" ViewItem="Customer" SizeConstraintsType="Default" Index="2" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="TransDate" ViewItem="TransDate" SizeConstraintsType="Default" Index="3" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="Term" ViewItem="Term" SizeConstraintsType="Default" Index="4" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="DueDate" ViewItem="DueDate" SizeConstraintsType="Default" Index="5" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="Currency" ViewItem="Currency" SizeConstraintsType="Default" Index="6" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="TotalAmount" ViewItem="TotalAmount" SizeConstraintsType="Default" Index="7" RelativeSize="10" IsNewNode="True" />
+                  <LayoutItem Id="InvoicingOutstandingStatus" ViewItem="InvoicingOutstandingStatus" SizeConstraintsType="Default" Index="8" RelativeSize="13" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Item1" ShowCaption="True" Caption="Transaction Base" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Status" ViewItem="Status" SizeConstraintsType="Default" Index="0" RelativeSize="13" IsNewNode="True" />
+                <LayoutGroup Id="Auto976ab735-2847-4feb-b737-d71bc3f450f3" ShowCaption="False" Caption="Auto976ab735-2847-4feb-b737-d71bc3f450f3(16)" Direction="Horizontal" Index="1" RelativeSize="86" IsNewNode="True">
+                  <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" SizeConstraintsType="Default" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" SizeConstraintsType="Default" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="SalesOrder" RelativeSize="53" ImageName="" Removed="True">
+              <LayoutGroup Id="SalesOrder_col1" RelativeSize="48" ImageName="">
+                <LayoutItem Id="Customer" SizeConstraintsType="Default" RelativeSize="21" ViewItem="Customer" />
+                <LayoutItem Id="No" SizeConstraintsType="Default" RelativeSize="28" ViewItem="No" />
+                <LayoutItem Id="Term" SizeConstraintsType="Default" RelativeSize="28" ViewItem="Term" />
+                <LayoutItem Id="TransDate" SizeConstraintsType="Default" RelativeSize="21" ViewItem="TransDate" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesOrder_col2" RelativeSize="48" ImageName="">
+                <LayoutItem Id="Currency" SizeConstraintsType="Default" RelativeSize="21" ViewItem="Currency" />
+                <LayoutItem Id="DueDate" SizeConstraintsType="Default" RelativeSize="28" ViewItem="DueDate" />
+                <LayoutItem Id="InvoicingOutstandingStatus" SizeConstraintsType="Default" RelativeSize="28" ViewItem="InvoicingOutstandingStatus" />
+                <LayoutItem Id="TotalAmount" SizeConstraintsType="Default" RelativeSize="21" ViewItem="TotalAmount" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="TransactionBase" RelativeSize="45" ImageName="" Direction="Horizontal" Removed="True">
+              <LayoutItem Id="EntryDateTime" ViewItem="EntryDateTime" Removed="True" />
+              <LayoutItem Id="Status" ViewItem="Status" Removed="True" />
+              <LayoutItem Id="SubmitDateTime" ViewItem="SubmitDateTime" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="18" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+            <LayoutGroup Id="Details" RelativeSize="100" ImageName="Order" Caption="Details" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+              <LayoutItem Id="Details" SizeConstraintsType="Default" RelativeSize="100" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" ViewItem="Details" />
+            </LayoutGroup>
+            <LayoutGroup Id="ChangeHistories" RelativeSize="100" ImageName="BO_Audit_ChangeHistory" Caption="Change Histories" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default">
+              <LayoutItem Id="ChangeHistories" SizeConstraintsType="Default" RelativeSize="100" CaptionLocation="Default" CaptionWordWrap="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" ViewItem="ChangeHistories" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="INF.Module.SalesOrderDetail_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" ImageName="">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="61" ImageName="">
+            <LayoutGroup Id="SalesOrderDetail" RelativeSize="100" ImageName="" Direction="Vertical">
+              <LayoutGroup Id="SalesOrderDetail_col1" RelativeSize="80" ImageName="">
+                <LayoutItem Id="Item" SizeConstraintsType="Default" RelativeSize="20" />
+                <LayoutItem Id="Quantity" SizeConstraintsType="Default" RelativeSize="15" />
+                <LayoutItem Id="PricePerUnit" SizeConstraintsType="Default" RelativeSize="15" />
+                <LayoutItem Id="Amount" ViewItem="Amount" SizeConstraintsType="Default" Index="3" RelativeSize="15" IsNewNode="True" />
+                <LayoutItem Id="InvoicedQuantity" ViewItem="InvoicedQuantity" SizeConstraintsType="Default" Index="4" RelativeSize="15" IsNewNode="True" />
+                <LayoutItem Id="OutstandingQuantity" ViewItem="OutstandingQuantity" SizeConstraintsType="Default" Index="5" RelativeSize="20" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="SalesOrderDetail_col2" RelativeSize="48" ImageName="" Caption="SalesOrderDetail_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="Amount" Removed="True" />
+                <LayoutItem Id="InvoicedQuantity" Removed="True" />
+                <LayoutItem Id="OutstandingQuantity" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="InvoiceDetails_Group" Direction="Vertical" Index="1" RelativeSize="38" ImageName="BO_Invoice">
+            <LayoutItem Id="InvoiceDetails" SizeConstraintsType="Default" RelativeSize="68" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <NavigationItems StartupNavigationItem="Item_ListView" />
+  <Options UIType="TabbedMDI" FormStyle="Ribbon" />
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="12.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="12.2.4.0" IsNewNode="True" />
+  </SchemaModules>
+</Application>
