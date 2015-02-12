@@ -81,16 +81,21 @@ Public Class SalesInvoiceDetail
         Set(value As SalesOrderDetail)
             SetPropertyValue("SalesOrderDetail", fSalesOrderDetail, value)
             If Not IsLoading Then
-                Quantity = SalesOrderDetail.OutstandingQuantity
-                If SalesOrderDetail.SalesOrder.Currency IsNot SalesInvoice.Currency Then
-                    Dim tmpAmount As Double = SalesOrderDetail.SalesOrder.Currency.GetRate(SalesInvoice.TransDate) / SalesInvoice.Rate * SalesOrderDetail.PricePerUnit
-                    If SalesInvoice.Currency.RoundingSetup Is Nothing Then
-                        PricePerUnit = tmpAmount
+                If SalesOrderDetail IsNot Nothing Then
+                    Quantity = SalesOrderDetail.OutstandingQuantity
+                    If SalesOrderDetail.SalesOrder.Currency IsNot SalesInvoice.Currency Then
+                        Dim tmpAmount As Double = SalesOrderDetail.SalesOrder.Currency.GetRate(SalesInvoice.TransDate) / SalesInvoice.Rate * SalesOrderDetail.PricePerUnit
+                        If SalesInvoice.Currency.RoundingSetup Is Nothing Then
+                            PricePerUnit = tmpAmount
+                        Else
+                            PricePerUnit = SalesInvoice.Currency.RoundingSetup.Round(tmpAmount)
+                        End If
                     Else
-                        PricePerUnit = SalesInvoice.Currency.RoundingSetup.Round(tmpAmount)
+                        PricePerUnit = SalesOrderDetail.PricePerUnit
                     End If
                 Else
-                    PricePerUnit = SalesOrderDetail.PricePerUnit
+                    Quantity = 0
+                    PricePerUnit = 0
                 End If
             End If
         End Set

@@ -11,7 +11,7 @@ Imports DevExpress.Persistent.Validation
 Imports DevExpress.ExpressApp.ConditionalAppearance
 <DefaultProperty("No")>
 <RuleCriteria("Rule Criteria for Cancel PurchaseOrder.InvoicingOutstandingStatus", "Cancel", "InvoicingOutstandingStatus = 'Full'")>
-<Appearance("Appearance for PurchaseOrder.Default", appearanceitemtype:="ViewItem", enabled:=False, targetitems:="InvoicingOutstandingStatus")>
+<Appearance("Appearance for PurchaseOrder.Default", appearanceitemtype:="ViewItem", enabled:=False, targetitems:="InvoicingOutstandingStatus, Total, Discount, GrandTotal")>
 <Appearance("Appearance for PurchaseOrder.EnableDetails = FALSE", appearanceitemtype:="ViewItem", criteria:="EnableDetails = FALSE", enabled:=False, targetitems:="Details")>
 <Appearance("Appearance for PurchaseOrder.Details.Count > 0", appearanceitemtype:="ViewItem", criteria:="@Details.Count > 0", enabled:=False, targetitems:="Currency")>
 <DeferredDeletion(False)>
@@ -43,6 +43,11 @@ Public Class PurchaseOrder
     Private fCurrency As Currency
     Private fShippingPoint As ShippingPoint
     Private fInvoicingOutstandingStatus As OutstandingStatus
+    Private fTotal As Double
+    Private fDiscountType As DiscountType
+    Private fDiscountValue As Double
+    Private fDiscount As Double
+    Private fGrandTotal As Double
 
     <Size(50)>
     <RuleRequiredField("Rule Required for PurchaseOrder.No", DefaultContexts.Save)>
@@ -140,7 +145,74 @@ Public Class PurchaseOrder
             SetPropertyValue("InvoicingOutstandingStatus", fInvoicingOutstandingStatus, value)
         End Set
     End Property
+    Public Property Total As Double
+        Get
+            Return fTotal
+        End Get
+        Set(ByVal value As Double)
+            SetPropertyValue("Total", fTotal, value)
+            If Not IsLoading Then
+                CalculateDiscount()
+            End If
+        End Set
+    End Property
 
+    <ImmediatePostData(True)>
+    Public Property DiscountType As DiscountType
+        Get
+            Return fDiscountType
+        End Get
+        Set(ByVal value As DiscountType)
+            SetPropertyValue("DiscountType", fDiscountType, value)
+            If Not IsLoading Then
+                CalculateDiscount()
+            End If
+        End Set
+    End Property
+    <ImmediatePostData(True)>
+    <RuleRange(DefaultContexts.Save, 0, 100, targetcriteria:="DiscountType = 'ByPercentage'")>
+    Public Property DiscountValue As Double
+        Get
+            Return fDiscountValue
+        End Get
+        Set(ByVal value As Double)
+            SetPropertyValue("DiscountValue", fDiscountValue, value)
+            If Not IsLoading Then
+                CalculateDiscount()
+            End If
+        End Set
+    End Property
+    <ImmediatePostData(True)>
+    Public Property Discount As Double
+        Get
+            Return fDiscount
+        End Get
+        Set(ByVal value As Double)
+            SetPropertyValue("Discount", fDiscount, value)
+            If Not IsLoading Then
+                CalculateGrandTotal()
+            End If
+        End Set
+    End Property
+    Public Property GrandTotal As Double
+        Get
+            Return fGrandTotal
+        End Get
+        Set(ByVal value As Double)
+            SetPropertyValue("GrandTotal", fGrandTotal, value)
+        End Set
+    End Property
+    Private Sub CalculateDiscount()
+        Select Case DiscountType
+            Case [Module].DiscountType.ByAmount
+                Discount = DiscountValue
+            Case [Module].DiscountType.ByPercentage
+                Discount = Total * DiscountValue / 100
+        End Select
+    End Sub
+    Private Sub CalculateGrandTotal()
+        GrandTotal = Total - Discount
+    End Sub
     <Association("PurchaseOrder-PurchaseOrderDetail", GetType(PurchaseOrderDetail)), Aggregated()>
     Public ReadOnly Property Details As XPCollection(Of PurchaseOrderDetail)
         Get

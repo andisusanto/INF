@@ -12,7 +12,7 @@ Imports DevExpress.ExpressApp.ConditionalAppearance
 
 <DefaultProperty("ViewName")>
 <CreatableItem(False)>
-<Appearance("Appearance for PurchaseOrderDetail.Default", enabled:=False, appearanceitemtype:="ViewItem", targetitems:="TotalPrice, InvoicedQuantity, InvoiceDetails, Amount, BaseAmount")>
+<Appearance("Appearance for PurchaseOrderDetail.Default", enabled:=False, appearanceitemtype:="ViewItem", targetitems:="TotalPrice, InvoicedQuantity, InvoiceDetails, Amount, Discount, GrandTotal")>
 <RuleCombinationOfPropertiesIsUnique("Rule CombinationUnique for PurchaseOrderDetail", DefaultContexts.Save, "PurchaseOrder, Item")>
 <DeferredDeletion(False)>
 <DefaultClassOptions()> _
@@ -37,6 +37,10 @@ Public Class PurchaseOrderDetail
     Private fQuantity As Double
     Private fPricePerUnit As Double
     Private fAmount As Double
+    Private fDiscountType As DiscountType
+    Private fDiscountValue As Double
+    Private fDiscount As Double
+    Private fGrandTotal As Double
     Private fInvoicedQuantity As Double
     <VisibleInDetailView(False), VisibleInListView(False)>
     Public Property Sequence As Integer
@@ -54,14 +58,19 @@ Public Class PurchaseOrderDetail
             Return fPurchaseOrder
         End Get
         Set(ByVal value As PurchaseOrder)
+            Dim oldValue = PurchaseOrder
             SetPropertyValue("PurchaseOrder", fPurchaseOrder, value)
-            If Not IsLoading AndAlso PurchaseOrder IsNot Nothing Then
-                If PurchaseOrder.Details.Count = 0 Then
-                    Sequence = 0
-                Else
-                    PurchaseOrder.Details.Sorting = New SortingCollection(New SortProperty("Sequence", DB.SortingDirection.Ascending))
-                    Sequence = PurchaseOrder.Details(PurchaseOrder.Details.Count - 1).Sequence + 1
+            If Not IsLoading Then
+                If PurchaseOrder IsNot Nothing Then
+                    PurchaseOrder.Total += GrandTotal
+                    If PurchaseOrder.Details.Count = 0 Then
+                        Sequence = 0
+                    Else
+                        PurchaseOrder.Details.Sorting = New SortingCollection(New SortProperty("Sequence", DB.SortingDirection.Ascending))
+                        Sequence = PurchaseOrder.Details(PurchaseOrder.Details.Count - 1).Sequence + 1
+                    End If
                 End If
+                If oldValue IsNot Nothing Then oldValue.Total -= GrandTotal
             End If
         End Set
     End Property
@@ -117,9 +126,75 @@ Public Class PurchaseOrderDetail
         End Get
         Set(ByVal value As Double)
             SetPropertyValue("Amount", fAmount, value)
+            If Not IsLoading Then
+                CalculateDiscount()
+            End If
         End Set
     End Property
 
+    <ImmediatePostData(True)>
+    Public Property DiscountType As DiscountType
+        Get
+            Return fDiscountType
+        End Get
+        Set(ByVal value As DiscountType)
+            SetPropertyValue("DiscountType", fDiscountType, value)
+            If Not IsLoading Then
+                CalculateDiscount()
+            End If
+        End Set
+    End Property
+    <ImmediatePostData(True)>
+    <RuleRange(DefaultContexts.Save, 0, 100, targetcriteria:="DiscountType = 'ByPercentage'")>
+    Public Property DiscountValue As Double
+        Get
+            Return fDiscountValue
+        End Get
+        Set(ByVal value As Double)
+            SetPropertyValue("DiscountValue", fDiscountValue, value)
+            If Not IsLoading Then
+                CalculateDiscount()
+            End If
+        End Set
+    End Property
+    <ImmediatePostData(True)>
+    Public Property Discount As Double
+        Get
+            Return fDiscount
+        End Get
+        Set(ByVal value As Double)
+            SetPropertyValue("Discount", fDiscount, value)
+            If Not IsLoading Then
+                CalculateGrandTotal()
+            End If
+        End Set
+    End Property
+    Public Property GrandTotal As Double
+        Get
+            Return fGrandTotal
+        End Get
+        Set(ByVal value As Double)
+            Dim oldValue = GrandTotal
+            SetPropertyValue("GrandTotal", fGrandTotal, value)
+            If Not IsLoading Then
+                If PurchaseOrder IsNot Nothing Then
+                    PurchaseOrder.Total -= oldValue
+                    PurchaseOrder.Total += GrandTotal
+                End If
+            End If
+        End Set
+    End Property
+    Private Sub CalculateDiscount()
+        Select Case DiscountType
+            Case [Module].DiscountType.ByAmount
+                Discount = DiscountValue
+            Case [Module].DiscountType.ByPercentage
+                Discount = Amount * DiscountValue / 100
+        End Select
+    End Sub
+    Private Sub CalculateGrandTotal()
+        GrandTotal = Amount - Discount
+    End Sub
     Public Property InvoicedQuantity As Double
         Get
             Return fInvoicedQuantity
@@ -157,3 +232,8 @@ Public Class PurchaseOrderDetail
         Amount = PricePerUnit * Quantity
     End Sub
 End Class
+
+Public Enum DiscountType
+    ByAmount
+    ByPercentage
+End Enum
