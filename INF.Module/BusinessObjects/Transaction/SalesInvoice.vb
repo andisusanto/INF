@@ -175,6 +175,9 @@ Public Class SalesInvoice
         End Get
         Set(value As Double)
             SetPropertyValue("GrandTotal", fGrandTotal, value)
+            If Not IsLoading Then
+                UpdateSayWords()
+            End If
         End Set
     End Property
 
@@ -255,6 +258,20 @@ Public Class SalesInvoice
         If TransDate.AddDays(Term) <> DueDate Then
             DueDate = TransDate.AddDays(Term)
         End If
+    End Sub
+
+    Private fEnglishSayWords As String
+    Public Property EnglishSayWords As String
+        Get
+            Return fEnglishSayWords
+        End Get
+        Set(value As String)
+            SetPropertyValue("EnglishSayWords", fEnglishSayWords, value)
+        End Set
+    End Property
+
+    Private Sub UpdateSayWords()
+        EnglishSayWords = INF.Module.EnglishSayWords.ConvertCurrencyToEnglish(GrandTotal) & " " & Currency.Name
     End Sub
 
 End Class
